@@ -1,0 +1,190 @@
+                      CLASSE PRINCIPAL
+package pacote;
+
+public class Principal {
+	public static void main(String[]args){
+		Visitante v = new Visitante("Zé", 16, "Ensino Médio");
+		Aluno a = new Aluno 	   ("Pedro", 22, "M", 112,"ADS");
+		Bolsista b = new Bolsista  ("Serafina", 26, "F", 011, "Medicina", 50.0f);
+		Tecnico t = new Tecnico    ("juca", 29, "M" ,0123, "Informatica", "TI");
+		
+		//agora e so fazer as chamadas dos metodos
+		
+		
+	}
+}
+=================================================================================
+                          CLASSE PAI PESSOA
+package pacote;
+
+public abstract class Pessoa {
+	protected String nome;
+	protected int idade;
+	protected String sexo;
+	
+	//Metodos construtores
+	public Pessoa(String n, int i, String s){
+		this.nome = n;
+		this.idade = i;
+		this.sexo = s;
+	}
+	
+	//Metodos especiais GET e SET
+	public String getNome(){
+		return nome;
+	}
+	public void setNome(String n){
+		nome = n;
+	}
+	public int getIdade(){
+		return idade;
+	}
+	public void setIdade(int i){
+		idade = i;
+	}
+	public String getSexo(){
+		return sexo;
+	}
+	public void setSexo(String s){
+		sexo= s;
+	}
+	//metodos publicos 
+	public void fazerNiver(){
+		this.idade ++;
+	}
+}
+
+=================================================================================
+                          CLASSE SUBCLASSE ALUNO
+                          
+package pacote;
+public class Aluno extends Pessoa{
+	private int matricula;
+	private String curso;
+	
+	public Aluno (String n, int i, String s,int m, String c){
+		super(n,i,s);
+		this.matricula = m;
+		this.curso = c;
+	}
+	//Metodos especiais GET e SET
+	public int getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(int m) {
+		this.matricula = m;
+	}
+	public String getCurso() {
+		return curso;
+	}
+	public void setCurso(String c) {
+		this.curso = c;
+	}
+	
+	
+	//metodos
+	public void pagarMensalidade(){
+		System.out.println("Pagando mensalidade do aluno:"+ this.getNome());
+	}
+	public void dadosAluno(){
+		System.out.println("NOME: "+this.getNome());
+	}
+}
+=================================================================================
+                          CLASSE SUB CLASSE VISITANTE
+package pacote;
+
+public class Visitante extends Pessoa {
+
+	public Visitante(String n, int i, String s) {
+		super(n, i, s);
+	}
+}
+================================================================================
+                        CLASSE SUBCLASSE BOLSISTA
+package pacote;
+
+public class Bolsista extends Aluno {
+	private float bolsa;
+
+	
+	public Bolsista(String n, int i, String s, int m, String c,float b){
+		super(n,i,s,m,c);
+		this.bolsa = b;
+	}
+	
+	//Metodos especiais GET e SET
+	public float getBolsa() {
+		return bolsa;
+	}
+	public void setBolsa(float b) {
+		this.bolsa = b;
+	}
+	
+	//metodos 
+	public void renovarBolsa(){
+		System.out.println("Renovando bolsa de: "+this.nome);
+	}
+	//metodo sobreposto
+	@Override
+	public void pagarMensalidade(){
+		System.out.println(this.nome +" é bolsista ! pagamento efetuado" );
+	}
+}
+=================================================================================
+                      CLASSE SUBCLASSE TECNICO
+package pacote;
+
+public final class Tecnico extends Aluno {
+	private String RegProf;
+	
+	//metodo Construtor
+	public Tecnico(String n, int i, String s, int m, String c, String rp){
+		super(n,i,s,m,c);
+		this.RegProf = rp;
+	}
+	
+	//metodos especiais GET e SET
+	public String getRegProf(){
+		return RegProf;
+	}
+	public void setRegProf(String rp){
+		this.RegProf = rp;
+	}
+	//metodo public
+	public void praticar(){
+		System.out.println("Exercendo a profissao");
+	}
+}	
+=================================================================================
+                          CLASSE SUBCLASSE PROFESSOR
+package pacote;
+public class Professor extends Pessoa {
+	private String espec;
+	private float sal;
+	
+	//metodo Construtor
+	public Professor(String n, int i, String s, String espec, Float sal){
+		super(n,i,s);
+		this.espec = espec;
+		this.sal = sal;
+	}
+	//Metodos especias GET e SET
+	public float getSal() {
+		return sal;
+	}
+	public void setSal(float sal) {
+		this.sal = sal;
+	}
+	public String getEspec() {
+		return espec;
+	}
+	public void setEspec(String espec) {
+		this.espec = espec;
+	}
+	//Metodo publico
+	public void receberAum(){
+		System.out.println("aumento do salario depois de um ano de trabalho");
+	}
+	
+}
